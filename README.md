@@ -11,7 +11,7 @@ _start:
   mov eax, 2
   mov ebx, 2
   mov edx, 5
-  mov [buf], "hello world"
+  mov @buf, "hello world"
 
   mov eax, 4
   ~ and so on...
