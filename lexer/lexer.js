@@ -11,9 +11,9 @@
 //     })
 
 // }
-import { Ident, Classify, negatives } from '../util.js'
+import { Ident, negatives } from '../util.js'
 
-export function Lexer(script) {
+export default function Lexer(script) {
     /*console.log(script)
     console.log("END SCRIPT")*/
     let program = script.split('\n')
@@ -28,7 +28,7 @@ export function Lexer(script) {
         let comment = false
         chars.forEach((char) => {
             if (str && char != '"') {
-                if (char === undefined) return
+                if (char === undefined || char === null) return
                 cstr += char
                 return
             }
@@ -39,6 +39,7 @@ export function Lexer(script) {
             }
             if (!char) return;
             if (char !== "*~" && lcomment) return;
+            if (char === null) return;
             switch (char) {
                 case '"':
                     str = !str
@@ -68,10 +69,20 @@ export function Lexer(script) {
                 case ']':
                     return idents.push({ 'char': char, 'ident': Ident.CLOSE_SQBRK })
                 case '{':
-                    return idents.push({ 'char': char, 'ident': Ident.COMMA })
-
+                    return idents.push({ 'char': char, 'ident': Ident.OPEN_CBRK })
+                case '}':
+                    return idents.push({ 'char': char, 'ident': Ident.CLOSE_CBRK })
+                case '+':
+                    return idents.push({ 'char': char, 'ident': Ident.ADD })
+                case '-':
+                    return idents.push({ 'char': char, 'ident': Ident.MINUS })
+                case '    ':
+                    return idents.push({ 'char': char, 'ident': Ident.TAB })
+                case '@':
+                    return idents.push({ 'char': char, 'ident': Ident.AT })
                 default:
-                    if (char == ' ') return;
+                    if (char == ' ' || char == null) return;
+                    console.log(char)
                     const readmem = { 'char': char, 'ident': Ident.TERM }
                     return idents.push(readmem)
             }

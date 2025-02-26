@@ -16,7 +16,10 @@ export const Ident = {
     TAB: 12,
     NEWLINE: 13,
     TERM: 14,
-    AT: 15
+    AT: 15,
+    EOF: 16,
+    NUMBER: 17,
+    STRING: 18
 }
 
-export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\~)|(~)|(@)|(    )/gim
+export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\~)|(~)|(@)|(\")|(    )|(\s)/gim
