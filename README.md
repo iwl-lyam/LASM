@@ -25,6 +25,22 @@ msg2len: assign 11
 buffer: reserve 11
 ```
 
+### Grammar formal definition
+```md
+S -> E
+E -> INDENT | DIRECTIVE | INSTRUCTION | LABEL
+INDENT -> "  "E
+DIRECTIVE -> ! entry | ! section SECT
+SECT -> <TEXT> | <DATA> | <BSS>
+INSTRUCTION -> <INS> A
+A -> ARG | ARG , A | epsilon
+ARG -> @ <ARG> | <ARG>
+LABEL -> <LABEL> : MEM | <LABEL>
+MEM -> <MEMTYPE> <BYTES> | <MEMTYPE> STRING
+STRING -> <STR> | <STR> , STRING | <NUM> | <NUM> , STRING
+```
+
+Where _custom_ terminals are in brackets. Tokens are separated by spaces for clarification.
 
 ## Stage 1 - Lexical analysis
 Tokens:
@@ -46,9 +62,8 @@ Tokens:
 - ~* (mult comment open)
 - *~ (mult comment close)
 
-## Stage 2 - Symbolic analysis
-- Group symbols together into an AST
-- Set program properties following directives
+## Stage 2 - parsing
+- Recursive descent parser
 
 ## Stage 3 - Compiling
 - Loop through mnemonics

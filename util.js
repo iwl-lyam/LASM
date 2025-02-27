@@ -15,11 +15,19 @@ export const Ident = {
     COMMENT: 11,
     TAB: 12,
     NEWLINE: 13,
-    TERM: 14,
+    MISC: 14,
     AT: 15,
     EOF: 16,
     NUMBER: 17,
     STRING: 18
 }
 
-export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\~)|(~)|(@)|(\")|(    )|(\s)/gim
+export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\~)|(~)|(@)|(\")|(  )|(\s)/gim
+
+export function lookahead(tokens, current, num) {
+    let t = []
+    for (let i = 0; i < num; i++) {
+        t.push(tokens[current+i])
+    }
+    return t
+}

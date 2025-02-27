@@ -21,9 +21,8 @@ export default function Lexer(script) {
     let str = false
     let cstr = ""
     let lcomment = false
-    idents.push({ 'char': '<EOF>', 'ident': Ident.EOF })
     program.forEach((line) => {
-        idents.push({ char: null, ident: Ident.NEWLINE })
+        let lineTokens = []
         let chars = line.split(negatives)
         let comment = false
         chars.forEach((char) => {
@@ -35,7 +34,7 @@ export default function Lexer(script) {
             if (comment) return
             if (parseFloat(char) || Math.abs(parseFloat(char)) || char === 0 && char != "") {
                 const payload = { 'char': char, 'ident': Ident.NUMBER }
-                return idents.push(payload)
+                return lineTokens.push(payload)
             }
             if (!char) return;
             if (char !== "*~" && lcomment) return;
@@ -44,7 +43,7 @@ export default function Lexer(script) {
                 case '"':
                     str = !str
                     if (!str) {
-                        idents.push({ char: cstr, ident: Ident.STRING })
+                        lineTokens.push({ char: cstr, ident: Ident.STRING })
                         cstr = ""
                     }
                     break;
@@ -59,35 +58,35 @@ export default function Lexer(script) {
                     break;
                 // NOTE: Put all tokens below here. Comments + Strings have priority.
                 case '!':
-                    return idents.push({ 'char': char, 'ident': Ident.BANG })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.BANG })
                 case ',':
-                    return idents.push({ 'char': char, 'ident': Ident.COMMA })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.COMMA })
                 case ':':
-                    return idents.push({ 'char': char, 'ident': Ident.COLON })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.COLON })
                 case '[':
-                    return idents.push({ 'char': char, 'ident': Ident.OPEN_SQBRK })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.OPEN_SQBRK })
                 case ']':
-                    return idents.push({ 'char': char, 'ident': Ident.CLOSE_SQBRK })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.CLOSE_SQBRK })
                 case '{':
-                    return idents.push({ 'char': char, 'ident': Ident.OPEN_CBRK })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.OPEN_CBRK })
                 case '}':
-                    return idents.push({ 'char': char, 'ident': Ident.CLOSE_CBRK })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.CLOSE_CBRK })
                 case '+':
-                    return idents.push({ 'char': char, 'ident': Ident.ADD })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.ADD })
                 case '-':
-                    return idents.push({ 'char': char, 'ident': Ident.MINUS })
-                case '    ':
-                    return idents.push({ 'char': char, 'ident': Ident.TAB })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.MINUS })
+                case '  ':
+                    return lineTokens.push({ 'char': char, 'ident': Ident.TAB })
                 case '@':
-                    return idents.push({ 'char': char, 'ident': Ident.AT })
+                    return lineTokens.push({ 'char': char, 'ident': Ident.AT })
                 default:
                     if (char == ' ' || char == null) return;
                     console.log(char)
-                    const readmem = { 'char': char, 'ident': Ident.TERM }
-                    return idents.push(readmem)
+                    const readmem = { 'char': char, 'ident': Ident.MISC }
+                    return lineTokens.push(readmem)
             }
         })
+        if (lineTokens.length > 0) idents.push(lineTokens)
     })
-    idents.push({ 'char': '<EOF>', 'ident': Ident.EOF })
     return idents
 }

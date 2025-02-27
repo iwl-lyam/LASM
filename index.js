@@ -1,4 +1,5 @@
 import Lexer from './lexer/lexer.js'
+import Parser from './parser/parser.js'
 
 console.log(Lexer(`~ LASM example code - note only 32 bits available
 !section TEXT
