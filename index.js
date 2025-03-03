@@ -1,23 +1,26 @@
 import Lexer from './lexer/lexer.js'
 import Parser from './parser/parser.js'
 
-console.log(Lexer(`~ LASM example code - note only 32 bits available
+console.log(Parser(Lexer(`~ LASM example code - note only 32 bits available
 !section TEXT
-
 !entry
+
 _start:
   mov eax, 2
+
   mov ebx, 2
   mov edx, 5
   mov @buf, "hello world"
+`)))
 
-  mov eax, 4
-  ~ and so on...
 
-!section DATA
-msg: assign "Hi there from LASM!",10,0
-msglen: assign 21
-msg2len: assign 11
+//   mov eax, 4
+//   ~ and so on...
 
-!section BSS
-buffer: reserve 11`))
+// !section DATA
+// msg: assign "Hi there from LASM!",10,0
+// msglen: assign 21
+// msg2len: assign 11
+
+// !section BSS
+// buffer: reserve 11`))

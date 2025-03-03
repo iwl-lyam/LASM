@@ -24,10 +24,14 @@ export const Ident = {
 
 export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\~)|(~)|(@)|(\")|(  )|(\s)/gim
 
-export function lookahead(tokens, current, num) {
+export function peek(tokens, current, num) {
     let t = []
     for (let i = 0; i < num; i++) {
         t.push(tokens[current+i])
     }
     return t
+}
+
+export function active(tokens, current) {
+    return tokens[current]
 }

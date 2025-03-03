@@ -81,7 +81,6 @@ export default function Lexer(script) {
                     return lineTokens.push({ 'char': char, 'ident': Ident.AT })
                 default:
                     if (char == ' ' || char == null) return;
-                    console.log(char)
                     const readmem = { 'char': char, 'ident': Ident.MISC }
                     return lineTokens.push(readmem)
             }
