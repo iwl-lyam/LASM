@@ -1,5 +1,6 @@
 import {Ident, peek} from "../../util.js"
 import directive from "./directive.js"
+import instruction from "./instruction.js"
 
 export default {
     name: "E",
@@ -18,7 +19,7 @@ export default {
             parsed = this.select(tokens, current)
         } else {
             // instruction
-            parsed.push("instruction: "+lookahead[0].char)
+            parsed = instruction.select(tokens, current, parsed)
         }
         return parsed
     }

@@ -27,7 +27,8 @@ export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\
 export function peek(tokens, current, num) {
     let t = []
     for (let i = 0; i < num; i++) {
-        t.push(tokens[current+i])
+        if (tokens[current + i]) t.push(tokens[current+i])
+        else t.push({char: null, ident: null})
     }
     return t
 }

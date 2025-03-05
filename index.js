@@ -7,10 +7,16 @@ console.log(Parser(Lexer(`~ LASM example code - note only 32 bits available
 
 _start:
   mov eax, 2
+  ret ~test
 
   mov ebx, 2
   mov edx, 5
   mov @buf, "hello world"
+  call test
+
+test:
+  mov eax,@buf
+  ret
 `)))
 
 
