@@ -24,8 +24,8 @@ export const Ident = {
 
 export const negatives = /(!)|(:)|(\[)|(\])|(\{)|(\})|(\,)|(\+)|(\-)|(\~\*)|(\*\~)|(~)|(@)|(\")|(  )|(\s)/gim
 
-export function peek(tokens, current, num) {
-    let t = []
+export function peek(tokens: Token[], current: number, num: number) {
+    let t: Token[] = []
     for (let i = 0; i < num; i++) {
         if (tokens[current + i]) t.push(tokens[current+i])
         else t.push({char: null, ident: null})
@@ -35,4 +35,14 @@ export function peek(tokens, current, num) {
 
 export function active(tokens, current) {
     return tokens[current]
+}
+
+export type NonTerminal = {
+    name: string,
+    select(tokens: Token[], current: number, parsed: string[]): string[]
+}
+
+export type Token = {
+    char: string | null,
+    ident: number | null
 }

@@ -1,8 +1,8 @@
-import {Ident, peek} from "../../util.js"
+import {Ident, peek, Token} from "../../util.ts"
 
 export default {
     name: "SECT",
-    select(tokens, current, parsed) { //only tml
+    select(tokens: Token[], current: number, parsed: string[]): string[] { //only tml
         const lookahead = peek(tokens, current, 1)
         if (lookahead[0].char == "TEXT") {
             parsed.push("Text section")

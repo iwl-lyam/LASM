@@ -1,10 +1,10 @@
-import {Ident, peek} from "../../util.js"
-import directive from "./directive.js"
-import instruction from "./instruction.js"
+import {Ident, peek, Token} from "../../util.ts"
+import directive from "./directive.ts"
+import instruction from "./instruction.ts"
 
 export default {
     name: "E",
-    select(tokens, current, parsed=[]) { // only ntml E can ommit parsed (S->E)
+    select(tokens: Token[], current: number, parsed: string[] = []): string[] { // only ntml E can ommit parsed (S->E)
         const lookahead = peek(tokens, current, 3)
         if (lookahead[0].ident == Ident.BANG) {
             // directive

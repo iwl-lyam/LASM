@@ -1,9 +1,9 @@
-import {Ident, peek} from "../../util.js"
-import a from './a.js'
+import {Ident, peek, Token} from "../../util.ts"
+import a from './a.ts'
 
 export default {
     name: "INSTRUCTION",
-    select(tokens, current, parsed) {
+    select(tokens: Token[], current: number, parsed: string[]): string[] {
         const lookahead = peek(tokens, current, 2)
         if (lookahead[1].char === null) {
             //A = epsilon ==> no instruction arg

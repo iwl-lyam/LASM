@@ -1,8 +1,8 @@
-import {Ident, peek} from "../../util.js"
+import {Ident, peek, Token} from "../../util.ts"
 
 export default {
     name: "ARG",
-    select(tokens, current, parsed) {
+    select(tokens: Token[], current: number, parsed: string[]): string[] {
         const lookahead = peek(tokens, current, 2)
         // console.log(lookahead)
         if (lookahead[0].ident === Ident.AT) {

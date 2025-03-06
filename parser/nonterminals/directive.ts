@@ -1,9 +1,9 @@
-import {Ident, peek} from "../../util.js"
-import sect from "./sect.js"
+import {Ident, peek, Token} from "../../util.ts"
+import sect from "./sect.ts"
 
 export default {
     name: "DIRECTIVE",
-    select(tokens, current, parsed) {
+    select(tokens: Token[], current: number, parsed: string[]): string[] {
         const lookahead = peek(tokens, current, 1)
         if (lookahead[0].char == "entry") {
             parsed.push("entry directive")

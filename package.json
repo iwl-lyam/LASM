@@ -2,7 +2,7 @@
   "name": "lasm",
   "version": "1.0.0",
   "description": "The Lyam Assembler - Compiles LASM code into ELF x86 machine code, very fun, very fun indeed",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -11,28 +11,28 @@
 //     })
 
 // }
-import { Ident, negatives } from '../util.js'
+import { Ident, negatives, Token } from '../util.ts'
 
-export default function Lexer(script) {
+export default function Lexer(script: string) {
     /*console.log(script)
     console.log("END SCRIPT")*/
     let program = script.split('\n')
-    let idents = []
+    let idents: Token[][] = []
     let str = false
     let cstr = ""
     let lcomment = false
-    program.forEach((line) => {
-        let lineTokens = []
+    program.forEach((line: string) => {
+        let lineTokens: Token[] = []
         let chars = line.split(negatives)
         let comment = false
-        chars.forEach((char) => {
+        chars.forEach((char: string) => {
             if (str && char != '"') {
                 if (char === undefined || char === null) return
                 cstr += char
                 return
             }
             if (comment) return
-            if (parseFloat(char) || Math.abs(parseFloat(char)) || char === 0 && char != "") {
+            if (parseFloat(char) || Math.abs(parseFloat(char))) {
                 const payload = { 'char': char, 'ident': Ident.NUMBER }
                 return lineTokens.push(payload)
             }

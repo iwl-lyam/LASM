@@ -1,5 +1,5 @@
-import Lexer from './lexer/lexer.js'
-import Parser from './parser/parser.js'
+import Lexer from './lexer/lexer.ts'
+import Parser from './parser/parser.ts'
 
 console.log(Parser(Lexer(`~ LASM example code - note only 32 bits available
 !section TEXT
