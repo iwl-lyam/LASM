@@ -46,3 +46,29 @@ export type Token = {
     char: string | null,
     ident: number | null
 }
+
+export type Section = {
+    char: "DATA" | "TEXT" | "BSS",
+    labels: Label[]
+}
+
+export type Label = {
+    instructions: Instruction[], //all instructions must within a label
+    name: string,
+    directives: Directive[]
+}
+
+export type Directive = {
+    type: "ENTRY" // only one for now
+}
+
+export type Instruction = {
+    instruction: string,
+    args?: Argument[]
+}
+
+export type Argument = {
+    pointer?: boolean,
+    name: string,
+    type: number
+}

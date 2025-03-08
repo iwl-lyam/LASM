@@ -4,10 +4,14 @@ import e from "./nonterminals/e.ts"
 export let stuff = ""
 
 export default function Parser(lines: Token[][]) {
-    let parseStack: string[][] = []
+    let parseStack: any[] = []
     lines.forEach(line => {
         let count = 0
-        parseStack.push(e.select(line, count))
+        let exp = e.select(line, count, parseStack)
+        // console.log(parseStack, "\n")
+        if (exp.length > 0) {
+            parseStack = exp
+        }
     })
     return parseStack
 }

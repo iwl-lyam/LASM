@@ -1,15 +1,16 @@
-import {Ident, peek, Token} from "../../util.ts"
+import {Directive, Ident, peek, Token} from "../../util.ts"
+import { Section, Label } from "../../util.ts"
 
 export default {
     name: "SECT",
-    select(tokens: Token[], current: number, parsed: string[]): string[] { //only tml
+    select(tokens: Token[], current: number, parsed: (Section | Directive)[]): (Section | Directive)[] { //only tml
         const lookahead = peek(tokens, current, 1)
         if (lookahead[0].char == "TEXT") {
-            parsed.push("Text section")
+            parsed.push({char: "TEXT", labels: [] as Label[]})
         } else if (lookahead[0].char == "DATA") {
-            parsed.push("Data section")
+            parsed.push({char: "DATA", labels: [{name: "_", instructions: [], directives: []}] as Label[]})
         } else if (lookahead[0].char == "BSS") {
-            parsed.push("BSS section")
+            parsed.push({char: "BSS", labels: [{name: "_", instructions: [], directives: []}] as Label[]})
         }
         return parsed
     }

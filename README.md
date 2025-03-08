@@ -1,5 +1,5 @@
 # The Lyam Assembler - GCSE Project
-The Lyam Assembler - Compiles LASM code into ELF x86 machine code, very fun, very fun indeed
+The Lyam Assembler - Compiles LASM code into ELF x86 machine code, very fun, very fun indeed. I use Deno but I'm sure other runtimes will also work.
 
 ## Syntax
 ```
@@ -17,12 +17,12 @@ _start:
   ~ and so on...
 
 !section DATA
-msg: assign "Hi there from LASM!",10,0
-msglen: assign 21
-msg2len: assign 11
+assign msg, "Hi there from LASM!",10,0
+assign msg, 21
+assign msg2len, 11
 
 !section BSS
-buffer: reserve 11
+reserve buffer, 11
 ```
 
 ### Grammar formal definition
@@ -58,6 +58,7 @@ Tokens:
 - ,
 - \+
 - \-
+- @
 - ~ (comment)
 - ~* (mult comment open)
 - *~ (mult comment close)

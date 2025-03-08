@@ -32,7 +32,7 @@ export default function Lexer(script: string) {
                 return
             }
             if (comment) return
-            if (parseFloat(char) || Math.abs(parseFloat(char))) {
+            if (parseFloat(char) || Math.abs(parseFloat(char)) || char === "0") {
                 const payload = { 'char': char, 'ident': Ident.NUMBER }
                 return lineTokens.push(payload)
             }

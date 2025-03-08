@@ -1,9 +1,9 @@
-import {Ident, peek, Token} from "../../util.ts"
+import {Directive, Ident, peek, Section, Token} from "../../util.ts"
 import arg from './arg.ts'
 
 export default {
     name: "A",
-    select(tokens: Token[], current: number, parsed: string[]): string[] {
+    select(tokens: Token[], current: number, parsed: (Section | Directive)[]): (Section | Directive)[] {
         let lookahead = peek(tokens, current, 3)
         if (lookahead[1].ident == Ident.COMMA || lookahead[2].ident == Ident.COMMA) {
             // multi argument
