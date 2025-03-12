@@ -1,6 +1,7 @@
 import Lexer from './lexer/lexer.ts'
 import Parser from './parser/parser.ts'
 
+
 const parsed = Parser(Lexer(`~ LASM example code - note only 32 bits available
 !section TEXT
 
@@ -33,6 +34,7 @@ reserve buffer, 11
 //   })
 // })
 console.log(parsed)
+
 
 // console.log((Lexer(`~ LASM example code - note only 32 bits available
 //   !section TEXT

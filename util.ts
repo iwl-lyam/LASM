@@ -72,3 +72,56 @@ export type Argument = {
     name: string,
     type: number
 }
+
+export type InstructionDefinition = {
+    //todo
+}
+
+export enum Reference {
+    LABEL,
+    EAX,
+    EBX,
+    ECX,
+    EDX,
+    ESI,
+    EDI,
+    ESP,
+    EBP,
+    AX,
+    BX,
+    CX,
+    DX,
+    SI,
+    DI,
+    SP,
+    BP,
+    AH,
+    BH,
+    CH,
+    DH,
+    AL,
+    BL,
+    CL,
+    DL,
+    SIL,
+    DIL,
+    SPL,
+    BPL
+}
+
+export function identifyReference(reference: string) : {label: string, type: Reference} {
+    let ref: {label: string, type: Reference};
+    if (Reference[reference.toUpperCase()]) {
+        ref = {
+            label: reference.toUpperCase(),
+            type: Reference[reference.toUpperCase()]
+        }
+    } else {
+        ref = {
+            label: reference,
+            type: Reference.LABEL
+        }
+    }
+    console.log(ref)
+    return ref
+}
