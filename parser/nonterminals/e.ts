@@ -1,4 +1,4 @@
-import {Directive, Ident, Label, peek, Token, Section} from "../../util.ts"
+import {Directive, Ident, Label, peek, Token, Section, NonTerminal} from "../../util.ts"
 import directive from "./directive.ts"
 import instruction from "./instruction.ts"
 
@@ -30,4 +30,4 @@ export default {
         }
         return parsed
     }
-}
+} as NonTerminal

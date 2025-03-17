@@ -6,6 +6,7 @@ import {
   peek,
   Section,
   Token,
+  NonTerminal
 } from "../../util.ts";
 import a from "./a.ts";
 
@@ -48,4 +49,4 @@ export default {
     }
     return parsed;
   },
-};
+} as NonTerminal

@@ -1,6 +1,6 @@
 # Custom
 elf test/
-
+update.sh
 # Logs
 logs
 *.log

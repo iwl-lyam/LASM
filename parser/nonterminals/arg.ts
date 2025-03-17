@@ -1,4 +1,4 @@
-import {Directive, Ident, peek, Section, Token} from "../../util.ts"
+import {Directive, Ident, peek, Section, Token, NonTerminal} from "../../util.ts"
 
 export default {
     name: "ARG",
@@ -30,4 +30,4 @@ export default {
         }
         return parsed
     }
-}
+} as NonTerminal

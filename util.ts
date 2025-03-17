@@ -39,7 +39,7 @@ export function active(tokens, current) {
 
 export type NonTerminal = {
     name: string,
-    select(tokens: Token[], current: number, parsed: string[]): string[]
+    select(tokens: Token[], current: number, parsed: (Section | Directive)[]): (Section | Directive)[]
 }
 
 export type Token = {
