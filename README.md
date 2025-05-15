@@ -1,5 +1,5 @@
 # The Lyam Assembler - GCSE Project
-The Lyam Assembler - Compiles LASM code into ELF x86 machine code, very fun, very fun indeed. I use Deno but I'm sure other runtimes will also work.
+The Lyam Assembler - Compiles LASM code into ELF x86 machine code, very fun, very fun indeed. I use Deno but I'm sure other runtimes will also work. I am extremely proud of this parser!! Scribbles of a person who found out about the dragon book.
 
 ## Syntax
 ```

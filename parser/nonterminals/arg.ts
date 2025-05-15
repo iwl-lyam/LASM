@@ -8,7 +8,8 @@ export default {
         if (lookahead[0].ident === Ident.AT) {
             //pointer
             // parsed[parsed.length-1] += `pointer to ${lookahead[1].char}, `
-            const lastParsed = parsed[parsed.length-1];
+            const lastParsed = parsed[parsed.length-1] as Section;
+
             if (lastParsed.labels) {
                 const ins = lastParsed.labels[lastParsed.labels.length-1].instructions
                 if (ins[ins.length-1].args) {
@@ -18,7 +19,7 @@ export default {
             }
             parsed[parsed.length-1] = lastParsed
         } else {
-            const lastParsed = parsed[parsed.length-1];
+            const lastParsed = parsed[parsed.length-1] as Section;
             if (lastParsed.labels) {
                 const ins = lastParsed.labels[lastParsed.labels.length-1].instructions
                 if (ins[ins.length-1].args) {

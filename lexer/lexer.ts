@@ -13,6 +13,11 @@
 // }
 import { Ident, negatives, Token } from '../util.ts'
 
+/**
+ * LASM Lexical Analyser
+ * @param {string} script - The input program to be split
+ * @returns {Token[][]} Array of arrays of lines of tokens
+ */
 export default function Lexer(script: string) {
     /*console.log(script)
     console.log("END SCRIPT")*/

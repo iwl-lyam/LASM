@@ -1,9 +1,15 @@
-import { Token } from "../util.ts"
+import { Directive, Section, Token } from "../util.ts"
 import e from "./nonterminals/e.ts"
 
 export let stuff = ""
 
-export default function Parser(lines: Token[][]) {
+/**
+ * LASM Recursive Descent Parser
+ * (leftmost derivation, no backtracking, uses prediction)
+ * @param {Token[][]} lines - Array of array of lines of tokens
+ * @returns {(Directive | Section)[]} LASM Abstract Syntax Tree
+ */
+export default function Parser(lines: Token[][]) : (Directive | Section)[] {
     let parseStack: any[] = []
     lines.forEach(line => {
         let count = 0

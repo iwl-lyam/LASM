@@ -27,7 +27,7 @@ export default {
         //     label.instructions.push({instruction: lookahead[0].char?.toString(), args: []} as Instruction)
         //     (parsed[parsed.length-1] as Section).labels[lastParsed.labels.length - 1] = label
         // }
-        const lastParsed = parsed[parsed.length - 1];
+        const lastParsed = parsed[parsed.length - 1] as Section;
         if (lastParsed.labels) {
           lastParsed.labels[lastParsed.labels.length - 1].instructions.push({
             instruction: lookahead[0].char,
@@ -37,7 +37,7 @@ export default {
       } else {
         current += 1;
         // parsed.push('instruction: '+lookahead[0].char+', with args ')
-        const lastParsed = parsed[parsed.length - 1];
+        const lastParsed = parsed[parsed.length - 1] as Section;
         if (lastParsed.labels) {
           lastParsed.labels[lastParsed.labels.length - 1].instructions.push({
             instruction: lookahead[0].char,

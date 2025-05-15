@@ -6,7 +6,7 @@ export default {
     select(tokens: Token[], current: number, parsed: (Section | Directive)[]): (Section | Directive)[] {
         const lookahead = peek(tokens, current, 1)
         if (lookahead[0].char == "entry") {
-            const lastParsed = parsed[parsed.length - 1];
+            const lastParsed = parsed[parsed.length - 1] as Section;
             if (lastParsed.labels && lastParsed.char === "TEXT") {
                 lastParsed.labels[lastParsed.labels.length - 1].directives.push({type: "ENTRY"});
             }
