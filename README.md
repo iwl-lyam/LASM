@@ -1,6 +1,8 @@
 # The Lyam Assembler - GCSE Project
 The Lyam Assembler - Compiles LASM code into ELF x86 machine code, very fun, very fun indeed. I use Deno but I'm sure other runtimes will also work. I am extremely proud of this parser!! Scribbles of a person who found out about the dragon book.
 
+**See also:** [86-set](https://github.com/iwl-lyam/86-set), the accompanying npm module I have made for this project.
+
 ## Syntax
 ```
 ~ LASM example code - note only 32 bits available
